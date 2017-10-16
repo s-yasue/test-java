@@ -14,9 +14,6 @@ import jp.co.yoshidumi.core.util.StringUtils;
 
 /**
  * Test用Action<br>
- * ActionはHTTP(S)リクエストを受け取る入り口で、クライアントにレスポンスを返す役割を持ちます。
- * いざなみフレームワークでは、親クラスにjp.co.yoshidumi.core.controller.AbstractActionを持つことで、
- * リクエストURLに対してActionとMethodのマッピングを行います。
  * 
  * @author yasue
  *
