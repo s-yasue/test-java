@@ -2,12 +2,15 @@ package jp.co.example.myapp.controller;
 
 import java.util.List;
 
+import org.slim3.controller.Navigation;
+
 import jp.co.example.myapp.dto.TestDto;
 import jp.co.example.myapp.logic.TestLogic;
 import jp.co.example.myapp.model.Test;
 import jp.co.yoshidumi.core.controller.AbstractAction;
 import jp.co.yoshidumi.core.controller.ajax.Ajax;
 import jp.co.yoshidumi.core.controller.ajax.Ajax.PropertyCase;
+import jp.co.yoshidumi.core.util.StringUtils;
 
 /**
  * Test用Action<br>
@@ -19,7 +22,7 @@ import jp.co.yoshidumi.core.controller.ajax.Ajax.PropertyCase;
  *
  */
 public class TestAction extends AbstractAction {
-	
+
 	private TestLogic testLogic;
 	private String testCode;
 	private List<TestDto> testList;
@@ -34,13 +37,19 @@ public class TestAction extends AbstractAction {
 		testList = testLogic.cvtModel2dto(tests);
 		return LIST;
 	}
-	
+
 	@Ajax(propertyCase = PropertyCase.LOWER_SNAKE)
 	public TestDto load() {
 		Test test = testLogic.selectById(testCode);
 		return testLogic.cvtModel2dto(test);
 	}
 
+	public Navigation test() {
+		if (StringUtils.isEmpty(testCode)) {
+			return null;
+		}
+		return null;
+	}
 
 	public void setTestLogic(TestLogic testLogic) {
 		this.testLogic = testLogic;
@@ -57,6 +66,5 @@ public class TestAction extends AbstractAction {
 	public List<TestDto> getTestList() {
 		return testList;
 	}
-
 
 }
